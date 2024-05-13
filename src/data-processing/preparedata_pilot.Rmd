@@ -1,0 +1,50 @@
+---
+title: 'Prepare Data - Pilot Study'
+author: 
+output: 
+  github_document:
+    toc: yes
+always_allow_html: true
+editor_options: 
+  
+  chunk_output_type: console
+---
+
+```{r "setup", include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.align = "center",
+                      fig.path=('../../report/figures/'))
+library(printr)
+options(digits = 2)
+library(rmarkdown)
+```
+
+## Required Packages &amp; Reproducibility
+```{r "env", message=FALSE, warning=F}
+rm(list=ls())
+source(here::here("src/lib/functions.R"))
+#renv::snapshot()
+```
+
+## Tidy Data
+```{r "get & clean data", results="hide"}
+source(here("src/data-processing/clean_pilot.R"))
+```
+
+# Distributions of Representation for In- & Out-Groups
+```{r "distributions"}
+source(here("src/data-processing/distributions.R"))
+p1 + p2
+```
+
+# Policy vs Group Representation
+```{r policy, fig.width=12, fig.height=8}
+source(here("src/analysis/treatment_checks.R"))
+p3
+```
+
+# Preference for Statement
+```{r statement}
+source(here("src/analysis/statement_choice.R"))
+p4
+```
